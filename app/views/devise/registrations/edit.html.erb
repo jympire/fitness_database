@@ -1,0 +1,193 @@
+<div class="container content devise">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="container">
+          <h3>Edit My Profile</h3>
+          
+          <%= link_to "View My Profile", user_path(current_user.id), class: "underline" %>
+          
+          <br>
+           
+            <div class="row">
+              <div class="col-sm-2">
+               <br>
+                <%= image_tag avatar_url(@user), class: "avatar-large" %>&emsp;
+              </div>
+              
+          <br>
+             
+              <div class="col-sm-6">
+                <span><%= current_user.first_name %> <%= current_user.last_name %> <br>
+                Manage your avatar using <a href="https://en.gravatar.com" class="underline" target="_blank">Gravatar</a>.</span> 
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-3">
+                <button class="btn btn-save" data-toggle="modal" data-target="#update-profile">Edit Profile</button>  
+              </div>            
+            </div>
+            
+          <hr>
+            
+            <div class="row">
+              <div class="col-sm-8">
+                <h4>Change Your Password</h4>
+                <br>
+                Update the password you use to login to your Fittbase account.
+              </div>
+                          
+          <br>
+                           
+              <div class="col-sm-4">
+                <button class="btn btn-save" data-toggle="modal" data-target="#update-password">Update Password</button>  
+              </div>            
+            </div>
+            
+          <hr>
+
+            <h4>Cancel my account</h4><small>You are not subscribed to a plan.</small>
+
+            <p><small><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-save" %></small></p>
+
+            <small><%= link_to "Back", :back %></small>
+            <br>
+          
+          <br>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL TO EDIT PROFILE -->
+<div id="update-profile" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit My Profile</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          
+          <div class="form-group">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :last_name %><br />
+            <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, placeholder: "Email Address", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :username %><br />
+            <%= f.text_field :username, :class => "validate", :placeholder => "Username", class: "form-control", :disabled => true, required: true %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :facebook %><br />
+            <%= f.text_field :facebook, placeholder: "Facebook URL", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :twitter %><br />
+            <%= f.text_field :twitter, placeholder: "Twitter URL", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :instagram %><br />
+            <%= f.text_field :twitter, placeholder: "Instagram URL", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :location %><br />
+            <%= f.text_field :location, placeholder: "Where do you live?", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :gender %><br />
+            <%= f.text_field :gender, placeholder: "Gender", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :workout_type %><br />
+            <%= f.text_field :workout_type, placeholder: "What's your favorite type of workout?", class: "form-control" %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Save Changes", :class => "btn btn-save" %>
+          </div>
+          
+          <br>
+        <% end %> 
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL TO UPDATE PASSWORD -->
+<div id="update-password" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update My Password</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "New Password (leave blank if you don't want to change it)", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password (we need your current password to confirm your changes)", class: "form-control" %>
+            </div>
+          
+          <br>
+          
+          <div class="actions">
+            <%= f.submit "Update", :class => "btn btn-save" %>
+          </div>
+          <br>
+        <% end %> 
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+

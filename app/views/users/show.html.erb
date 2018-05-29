@@ -1,0 +1,48 @@
+<div class="container content">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="center">
+        <br>
+        <center><%= image_tag avatar_url(@user), class: "avatar-large" %></center>
+        <br>
+        <center>@<%= @user.username %></center>
+        <% if @user == current_user %>
+          <br>
+          <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
+        <% end %>
+        <% if current_user && current_user != @user %>
+          
+           
+        <% end %>
+      </div>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">Verified info</div>
+        <div class="panel-body">
+          <ul class="sidebar-list">
+            
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">About Me</div>
+        <div class="panel-body">
+          
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-9">
+      <h3>Hey, I'm <%= @user.first_name %>!</h3> 
+      <% if !@user.description.blank? %>
+      <div class="description row-space-3">
+        <%= @user.description %>
+      </div>
+      <% else %>
+      <% end %>
+      
+      <br>
+
+    </div>
+  </div> 
+</div> 
