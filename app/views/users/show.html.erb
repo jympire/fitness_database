@@ -27,7 +27,40 @@
       <div class="panel panel-default">
         <div class="panel-heading">About Me</div>
         <div class="panel-body">
-          
+          <% if !@user.title.blank? %>
+          <h5 class="about-me">Title</h5><div class="small"><%= @user.title %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.location.blank? %>
+          <h5 class="about-me">Location</h5><div class="small"><%= @user.location %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.gender.blank? %>
+          <h5 class="about-me">Gender</h5><div class="small"><%= @user.gender %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.height.blank? && !@user.height_inches.blank? %>
+          <h5 class="about-me">Height</h5><div class="small"><%= @user.height %> ft <%= @user.height_inches %> in</div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.weight.blank? %>
+          <h5 class="about-me">Weight</h5><div class="small"><%= @user.weight %> pounds</div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.activity_level.blank? %>
+          <h5 class="about-me">Activity Level</h5><div class="small"><%= @user.activity_level %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.workout_type.blank? %>
+          <h5 class="about-me">Favorite Workout</h5><div class="small"><%= @user.workout_type %></div>
+          <% else %>
+          <% end %>  
         </div>
       </div>
 
@@ -35,9 +68,9 @@
     <div class="col-md-9">
       <h3>Hey, I'm <%= @user.first_name %>!</h3> 
       <% if !@user.description.blank? %>
-      <div class="description row-space-3">
-        <%= @user.description %>
-      </div>
+        <div class="description row-space-3">
+          <%= @user.description %>
+        </div>
       <% else %>
       <% end %>
       

@@ -98,18 +98,8 @@
           </div>
           
           <div class="form-group">
-            <%= f.label :facebook %><br />
-            <%= f.text_field :facebook, placeholder: "Facebook URL", class: "form-control" %>
-          </div>
-          
-          <div class="form-group">
-            <%= f.label :twitter %><br />
-            <%= f.text_field :twitter, placeholder: "Twitter URL", class: "form-control" %>
-          </div>
-          
-          <div class="form-group">
-            <%= f.label :instagram %><br />
-            <%= f.text_field :twitter, placeholder: "Instagram URL", class: "form-control" %>
+            <%= f.label :title %><br />
+            <%= f.text_field :title, :class => "validate", :placeholder => "What do you do?", class: "form-control" %>
           </div>
           
           <div class="form-group">
@@ -118,13 +108,44 @@
           </div>
           
           <div class="form-group">
-            <%= f.label :gender %><br />
-            <%= f.text_field :gender, placeholder: "Gender", class: "form-control" %>
+            <label>Gender</label>
+            <%= f.select :gender, [["Female", "Female"], ["Male", "Male"], ["Other", "Other"], ["Rather Not Say", "Rather Not Say"]], prompt: "Select...", class: "form-control" %>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :height %><br />
+                <%= f.text_field :height, placeholder: "Feet", class: "form-control" %>
+              </div> 
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :height_inches %><br />
+                <%= f.text_field :height_inches, placeholder: "Inches", class: "form-control" %>
+              </div> 
+            </div>
+          </div>
+          
+          
+          <div class="form-group">
+            <%= f.label :weight %><br />
+            <%= f.text_field :weight, placeholder: "How much do you weigh in pounds?", class: "form-control" %>
           </div>
           
           <div class="form-group">
-            <%= f.label :workout_type %><br />
-            <%= f.text_field :workout_type, placeholder: "What's your favorite type of workout?", class: "form-control" %>
+            <label>Activity Level</label>
+            <%= f.select :activity_level, [["Sedentary", "Sedentary"], ["Light Activity", "Light Activity"], ["Moderate Activity", "Moderate Activity"], ["Very Active", "Very Active"]], prompt: "Select...", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <label>Favorite Workout</label>
+            <%= f.select :workout_type, [["HIIT", "HIIT"], ["Strength and Conditioning", "Strength and Conditioning"], ["Crossfit", "Crossfit"], ["Running", "Running"], ["Combat", "Combat"], ["Cycling", "Cycling"], ["Bodybuilding", "Bodybuilding"]], prompt: "Select...", class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.label :description %><br />
+            <%= f.text_area :description, placeholder: "Tell us about yourself.", class: "form-control" %>
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
