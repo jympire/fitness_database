@@ -9,18 +9,20 @@
         <% if @user == current_user %>
           <br>
           <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
+        <% else %>
+          <br>
+          <%= link_to "Follow", edit_user_registration_path, class: "btn btn-follow btn-block" %>
         <% end %>
-        <% if current_user && current_user != @user %>
-          
-           
-        <% end %>
+        
       </div>
       <br>
       <div class="panel panel-default">
         <div class="panel-heading">Verified info</div>
         <div class="panel-body">
           <ul class="sidebar-list">
-            
+            <% if @user.confirmation_token %>
+              <li>Email Address<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+            <% end %>  
           </ul>
         </div>
       </div>
@@ -43,7 +45,7 @@
           <% else %>
           <% end %>
           <% if !@user.height.blank? && !@user.height_inches.blank? %>
-          <h5 class="about-me">Height</h5><div class="small"><%= @user.height %> ft <%= @user.height_inches %> in</div>
+          <h5 class="about-me">Height</h5><div class="small"><%= @user.height_feet %> ft <%= @user.height_inches %> in</div>
           <br>
           <% else %>
           <% end %>
@@ -73,7 +75,12 @@
         </div>
       <% else %>
       <% end %>
-      
+      <br><br>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          
+        </div>
+      </div>
       <br>
 
     </div>

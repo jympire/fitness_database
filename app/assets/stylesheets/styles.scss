@@ -229,6 +229,24 @@ hr {
   }
 }
 
+.btn.btn-follow {
+  background-color: $primary !important;
+  color: $white;
+  padding: 5px 25px 5px 25px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+.btn.btn-follow:hover {
+  background-color: $primary !important;
+  color: $white;
+  padding: 5px 25px 5px 25px;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
 
 /* Input */
 input[type="text"], input[type="email"], input[type="password"], textarea {
@@ -467,4 +485,32 @@ input[type="checkbox"]:checked:before {
 }
 .add-button {
 	margin-top: 25px;
+}
+
+
+/* Sidebar */
+.sidebar-list {
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-item {
+  padding: 5px 0;
+  color: $dark;
+}
+
+.sidebar-link {
+  color: $dark;
+  text-decoration: none;
+}
+
+.sidebar-link:hover, .sidebar-link:focus {
+  color: $dark;
+  text-decoration: none;
+}
+
+.active.sidebar-link {
+  color: $dark;
+  font-weight: bold;
+  text-decoration: none;
 }
