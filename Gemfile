@@ -19,6 +19,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'pundit', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri
