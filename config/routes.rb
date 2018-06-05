@@ -8,19 +8,13 @@ Rails.application.routes.draw do
     root 'home#front'
   end
 
-  get 'about' , to: 'pages#about'
-
-  get 'support' , to: 'pages#support'
-
-  get 'terms' , to: 'pages#terms'
-  
-  get 'pricing' , to: 'pages#pricing'
-
-  get '/terms/privacy_policy' , to: 'pages#privacy'
-
-  get 'company', to: 'pages#company'
-
-  get 'careers', to: 'pages#careers'
+  match :about, to: 'home#about', as: :about, via: :get
+  match :support, to: 'home#support', as: :support, via: :get
+  match :terms, to: 'home#terms', as: :terms, via: :get
+  match :pricing, to: 'home#pricing', as: :pricing, via: :get
+  match :privacy_policy, to: 'home#privacy_policy', as: :privacy_policy, via: :get
+  match :company, to: 'home#company', as: :company, via: :get
+  match :careers, to: 'home#careers', as: :careers, via: :get
 
   resources :posts
   devise_for :users,

@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  before_action :set_user, except: :front
+  respond_to :html, :js
+  
   def front
   end
   
@@ -16,5 +19,10 @@ class HomeController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @user }
     end
+  end
+  
+  private
+  def set_user
+    @user = current_user
   end
 end
