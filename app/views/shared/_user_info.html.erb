@@ -1,0 +1,84 @@
+<div class="container content">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="center">
+        <br>
+        <center><%= image_tag avatar_url(@user), class: "avatar-large" %></center>
+        <br>
+        <center>@<%= @user.username %></center>
+        <% if @user == current_user %>
+          <br>
+          <%= link_to "Edit Profile", edit_user_registration_path(@user), class: "btn btn-default" %>
+        <% end %>
+
+      </div>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">Verified info</div>
+        <div class="panel-body">
+          <ul class="sidebar-list">
+            <% if @user.confirmation_token %>
+              <li>Email Address<span class="pull-right icon-babu"><i class="fa fa-check-circle-o"></i></span></li>
+            <% end %>  
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">About Me</div>
+        <div class="panel-body">
+          <% if !@user.title.blank? %>
+          <h5 class="about-me">Title</h5><div class="small"><%= @user.title %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.location.blank? %>
+          <h5 class="about-me">Location</h5><div class="small"><%= @user.location %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.gender.blank? %>
+          <h5 class="about-me">Gender</h5><div class="small"><%= @user.gender %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.height_feet.blank? && !@user.height_inches.blank? %>
+          <h5 class="about-me">Height</h5><div class="small"><%= @user.height_feet %> ft <%= @user.height_inches %> in</div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.weight.blank? %>
+          <h5 class="about-me">Weight</h5><div class="small"><%= @user.weight %> pounds</div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.activity_level.blank? %>
+          <h5 class="about-me">Activity Level</h5><div class="small"><%= @user.activity_level %></div>
+          <br>
+          <% else %>
+          <% end %>
+          <% if !@user.workout_type.blank? %>
+          <h5 class="about-me">Favorite Workout</h5><div class="small"><%= @user.workout_type %></div>
+          <% else %>
+          <% end %>  
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-9">
+      <h3>Hey, I'm <%= @user.first_name %>!</h3> 
+      <% if !@user.description.blank? %>
+        <div class="description row-space-3">
+          <%= @user.description %>
+        </div>
+      <% else %>
+      <% end %>
+      <br><br>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          
+        </div>
+      </div>
+      <br>
+    </div>
+  </div> 
+</div>

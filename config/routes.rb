@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  get 'home/front'
+  
+  authenticated :user do
+    root to: 'home#index', as: 'home'
+  end
+  unauthenticated :user do
+    root 'home#front'
+  end
 
   get 'about' , to: 'pages#about'
 
